@@ -1,0 +1,11 @@
+.icon {
+  font-size: 20px;
+}
+
+.icon__edit {
+  color: blue;
+}
+
+.icon__delete {
+  color: red;
+}

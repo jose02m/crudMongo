@@ -1,0 +1,40 @@
+<%- include ('layouts/header'); %>
+
+  <link rel="stylesheet" href="css/products.css">
+  <div class="container mt-4">
+
+    <div class="card col-md-6 offset-md-3">
+      <div class="card-body">
+        <form action="/edit/<%= product.id %>" method="post">
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Nombre</label>
+            <div class="col-sm-7">
+              <input type="text" name="name" class="form-control" value="<%= product.name %>">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Descripción</label>
+            <div class="col-sm-7">
+              <textarea name="description" cols="7" class="form-control" value="<%= product.description %>"></textarea>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Precio</label>
+            <div class="col-sm-7">
+              <input type="number" name="price" class="form-control" value="<%= product.price %>">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">En stock</label>
+            <div class="col-sm-7">
+              <input type="number" name="stock" class="form-control" value="<%= product.stock %>">
+            </div>
+          </div>
+          <a href="/" class="btn btn-outline-danger">Cancelar</a>
+          <button type="submit" class="btn btn-outline-success">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include ('layouts/footer'); %>

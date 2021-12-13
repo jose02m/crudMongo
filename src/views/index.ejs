@@ -1,0 +1,87 @@
+<%- include ('layouts/header'); %>
+
+  <link rel="stylesheet" href="css/products.css">
+  <div class="container mt-4">
+
+    <div class="mb-4">
+      <button class="btn btn-outline-success" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Agregar productos
+      </button>
+    </div>
+
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>En stock</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody >
+        <% products.forEach((product) => {  %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td>
+              <a href="/find/<%= product.id %>" class="mx-4">
+                <i class="fal fa-pencil icon icon__edit"></i>
+              </a>
+              <a href="/delete/<%= product.id %>">
+                <i class="fal fa-trash-alt icon icon__delete"></i>
+              </a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/addProduct" method="post">
+          <div class="modal-body">
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Nombre</label>
+              <div class="col-sm-7">
+                <input type="text" name="name" class="form-control">
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Descripción</label>
+              <div class="col-sm-7">
+                <textarea name="description" cols="7"  class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Precio</label>
+              <div class="col-sm-7">
+                <input type="number" name="price" class="form-control">
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">En stock</label>
+              <div class="col-sm-7">
+                <input type="number" name="stock" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<%- include ('layouts/footer'); %>
